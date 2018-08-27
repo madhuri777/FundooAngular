@@ -1,0 +1,23 @@
+<div ng-show="more">
+<md-card class="moreClass">
+<md-list-item ng-click="trashClick();close()">
+<div >Delete Note</div>
+<md-divider></md-divider>
+</md-list-item>
+<md-list-item ng-click="hidemore()">
+<div >Add Labels</div>
+</md-list-item>
+</md-card>
+</div>
+<div ng-hide="more">
+<div class="labelPanel">
+<div>Label Note</div>
+<div layout="row">
+<div class="searchlabel"><img src="assets/searchlabel.svg" /></div>
+<input style="width:130px" placeholder="Enter label Name" class="outlineclass">
+</div>
+<div  ng-repeat="label in labels|orderBy:'labelName'">
+  <md-checkbox class="standard" ng-checked="exists(label, selected)" ng-click="labelCheck(label,selected)">{{label.labelName}}</md-checkbox>
+</div>
+</div>
+</div>

@@ -1,0 +1,16 @@
+<div style="position:relative;padding:10px;">
+  <div layout="row"  class="profledivone">
+  <div>Select Profile Photo</div>
+  <div class="closebtn outlineclass" ng-click="" style="position:absolute; right:5;">&times;</div>
+</div>
+  <div>
+<div style="padding-bottom:5px;">Upload Photo: <input type="file" id="fileInput" /></div>
+<div class="cropArea">
+  <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+</div>
+<div style="padding-top:10px;">Cropped Image:</div>
+<div ><img ng-src="{{myCroppedImage}}" class="crop"/></div>
+</div>
+<div><md-button class="profilebutton" ng-click="cropeImage(myCroppedImage)">Set profile photo</md-button></div>
+<!-- <div><img ng-src="{{imageUrl}}" class="crop"/></div> -->
+</div>

@@ -1,0 +1,56 @@
+<div>
+    <div layout="row" layout-align="space-around" layout-padding="layout-padding" class="login-form">
+    <md-card>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2><span>Registration Form</span></h2>
+        </div>
+      </md-toolbar>
+      <md-card-content>
+        <form name="Form">
+          <div>
+            <div>
+              <md-input-container>
+                <label>User Name</label>
+                <input required type="text" ng-model="userName" ng-pattern="/(^[a-zA-Z]*)$/"/>
+                <div ng-messages="Form.userName.$error">
+                  <div ng-message-exp="['required','pattern']">Please Enter the Character </div>
+                </div>
+              </md-input-container>
+            </div>
+            <div>
+              <md-input-container>
+                <label>Email-id</label>
+                <input required type="email" ng-model="email" ng-pattern="/(^[a-zA-Z0-9]+@+[a-zA-Z_]+\.[a-zA-Z]{2,3})$/" />
+                <div ng-messages="Form.email.$error">
+                  <div ng-message-exp="['required','pattern']">Invalid email address,please re-enter mail id.</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div>
+              <md-input-container>
+                <label>Password</label>
+                <input required type="password" ng-model="password" minlength="6" maxlength="12" />
+                <div ng-messages="Form.email.$error">
+                  <div ng-message-exp="['required','minlength','maxlength']">password length should be min 8.</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div>
+              <md-input-container>
+                <label>PhoneNumber</label>
+                <input required type="text" ng-model="PhoneNumber" ng-pattern="/(^[0-9]{10})$/"/>
+                <div ng-messages="Form.PhoneNumber.$error">
+                  <div ng-message-exp="['required','minlength','maxlength']">please enter valid phone number</div>
+                </div>
+              </md-input-container>
+            </div>
+          </div>
+          <md-action>
+            <md-button class="md-raised md-primary" ng-click="registartion()" ng-disabled="!Form.$valid"> Register</md-button>
+          </md-action>
+        </form>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

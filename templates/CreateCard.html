@@ -1,0 +1,32 @@
+<div layout='row' layout-align='center center' flex-offset="20" class="card" style="padding-right:30%;padding-top:5%;">
+  <md-card style="width:450px;" ng-show="!showCard">
+    <div layout-align='space-between center' layout='row'>
+      <div contenteditable="true" style="border:none;outline:none;" class="createNote" ng-click="showCard=true">Take a Note.......
+      </div>
+    </div>
+  </md-card>
+  <div ng-show="showCard">
+    <md-card style="width:450px;padding-top:20px;" ng-style="{'background-color': createnotecolor}">
+      <div layout="column" layout-align="start end">
+        <img src="assets/pin.svg" />
+        <md-tooltip>pin</md-tooltip>
+      </div>
+      <div layout-align="space-around center">
+        <div layout="row" layout-align='space-between center'>
+
+          <div ng-if="imageUrl"><img ng-src="{{imageUrl}}" alt="image" class="createNoteImage" /></div>
+          <div contenteditable="true" style="border:none;outline:none;padding-top:20px;"  id="title" class="createNote" placeholder='Title'></div>
+        </div>
+        <!-- <div contenteditable style="border:none;outline:none;padding-top:5px;" ng-model="description" data-placeholder=""> -->
+        <div contenteditable="true" style="border:none;outline:none;padding-top:20px;"  id="description" class="createNote" placeholder='Enter some text'></div>
+        <md-chips ng-if="createreminder!=null">
+          <md-chip md-removable="true"><md-icon>schedule</md-icon>{{createreminder|date:shortDate}}<md-icon ng-click="remove()">cancel</md-icon></md-chip>
+        </md-chips>
+        <div layout="row">
+          <icon></icon>
+          <md-button ng-click="showCard=false;createNote()">close</md-button>
+        </div>
+      </div>
+    </md-card>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<md-sidenav md-disable-backdrop="false" md-component-id="left" style="position:fixed; margin-top:64px; background-color:#e8e8e8; width:20%">
+  <md-list>
+    <md-list-item ng-click="notes()" >
+      <div layout="row" layout-wrap >
+        <div class="sidebar_button"><img src="assets/bulb.svg" /></div>
+        <span class="sidebar_name">Notes</span>
+      </div>
+    </md-list-item>
+    <md-list-item ng-click="reminderState()">
+        <div layout="row" layout-wrap >
+          <!-- <md-button> -->
+          <div class="sidebar_button"><img src="assets/reminder.svg" /></div>
+          <span class="sidebar_name"> Reminders</span>
+          <!-- </md-button> -->
+        </div>
+    </md-list-item>
+    <md-divider></md-divider>
+
+    <div ng-repeat="label in getLabels|orderBy:'labelName'">
+    <md-list-item ng-click="LabelState(label)">
+        <div class="sidebar_button" layout="row" layout-wrap><img src="assets/label.svg" />{{label.labelName}}</div>
+    </md-list-item>
+          </div>
+
+    <md-list-item ng-click="labelDailogBox($event,thisScope)">
+      <div layout="row" layout-wrap>
+        <div class="sidebar_button"><img src="assets/createLabel.svg" /></div>
+        <span class="sidebar_name">Create new label</span>
+      </div>
+    </md-list-item>
+      <md-divider></md-divider>
+    <md-list-item ng-click="archiveState()">
+      <div layout="row" layout-wrap>
+        <div class="sidebar_button"><img src="assets/Archive.svg" /></div>
+        <span class="sidebar_name">Archive</span>
+      </div>
+    </md-list-item>
+    <md-list-item ng-click="trashState()">
+      <div layout="row" layout-wrap>
+        <div class="sidebar_button"><img src="assets/delete.svg" /></div>
+        <span class="sidebar_name">Trash</span>
+      </div>
+    </md-list-item>
+      <md-divider></md-divider>
+    <!-- <md-list-item ng-click="null">
+      <div layout="row" layout-wrap>
+        <div class="sidebar_button"><img src="assets/setting.svg" /></div>
+        <span class="sidebar_name">Setting</span>
+      </div>
+    </md-list-item>
+    <md-list-item ng-click="null">
+      <div layout="row">
+        <div class="sidebar_button">  <img src="assets/feedback.svg" /></div>
+        <span class="sidebar_name">Send feedback</span>
+      </div>
+    </md-list-item>
+    <md-list-item ng-click="null">
+      <div layout="row">
+        <div class="sidebar_button"><img src="assets/help.svg" /></div>
+        <span class="sidebar_name">Help</span>
+      </div>
+    </md-list-item> -->
+  </md-list>
+</md-sidenav>

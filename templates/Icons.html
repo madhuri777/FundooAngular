@@ -1,0 +1,37 @@
+<div layout="row" layout-align="space-around center"
+ style="padding-top:20px; width:240px;">
+  <md-button class="md-icon-button reminder-button{{note.noteid}}" ng-click="reminderPanel($event,note,note.noteid,'Reminder')">
+    <md-icon style="color: black;" ><img src="assets/reminder.svg" /></md-icon>
+    <md-tooltip>Reminder</md-tooltip>
+  </md-button>
+  <md-button class="md-icon-button" ng-click="updateDialogCard($event,note,'Collaborator')">
+    <md-icon style="color: black;" >person_add</md-icon>
+    <md-tooltip>Collaborator</md-tooltip>
+  </md-button>
+  <md-menu>
+    <md-button class="md-icon-button icon-buttons" ng-mouseenter="$mdMenu.open()">
+      <md-icon style="color: black;">color_lens</md-icon>
+      <md-tooltip>color</md-tooltip>
+    </md-button>
+    <md-menu-content width="3" height="" ng-mouseleave="$mdMenu.close()">
+      <md-menu-item flex-gt-md="5" flex="0">
+        <div ng-repeat="colors in boxList">
+        <div ng-repeat="box in colors" class="box" ng-style="{'background-color': box.color}" ng-click="upadteColor(box,note)"></div>
+      </div>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+  <md-button class="md-icon-button" ng-click="uploadImage(note)">
+    <input type="file"  id="file" class="inputfile" />
+    <label for="file"><md-icon style="color: black;">insert_photo</md-icon></label>
+    <md-tooltip>insertPhoto</md-tooltip>
+  </md-button>
+  <md-button class="md-icon-button" ng-click="isArchive(note)">
+    <img src="assets/Archive.svg" />
+    <md-tooltip>Archive</md-tooltip>
+  </md-button>
+  <md-button class="md-icon-button" ng-click="reminderPanel($event, note, note.noteid,'morePanel',ReminderPanelCtrl)">
+    <md-icon style="color: black;">more_vert</md-icon>
+    <md-tooltip>more</md-tooltip>
+  </md-button>
+</div>

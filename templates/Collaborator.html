@@ -1,0 +1,64 @@
+<div class="collaborator">
+  <div class="collaborator1">Collaborator</div>
+  <md-divider></md-divider>
+  <div class="collabr-font">
+    <div layout="row" class="collabr-owner">
+
+      <div class="collaboratorOwnerImage">
+        <div class="collaboratorOwnerImage-keep" style="background-image: url('/assets/keep-512.png');"></div>
+      </div>
+
+      <div>
+        <div class="collabr-owner">
+          <span class="collabr-owner-span1">{{item.userName}}</span>
+          <span class="collabr-owner-span1-span2">(Owner)<span>
+        </div>
+      <div class="a">{{item.userEmail}}</div>
+     </div>
+
+    </div>
+    <div layout="row" class="collabr-owner" ng-repeat="user in collaboratorUser">
+
+      <div class="collaboratorOwnerImage">
+        <div class="collaboratorOwnerImage-keep" style="background-image: url('/assets/keep-512.png');"></div>
+      </div>
+
+      <div class="collabr-owner">
+        <div >
+          <span class="collabr-owner-span1">{{user.username}}</span>
+          <span class="collabr-owner-span1-span2"><span>
+        </div>
+      <div class="a">{{user.emailId}}</div>
+     </div>
+     <div class="collbrt-btn">
+    <md-icon ng-click="removeCollaborator(user)" style="outline:none;">cancel</md-icon>
+    <md-tooltip>delete<md-tooltip>
+     </div>
+    </div>
+
+    <div layout="row" class="collabr-owner">
+
+    <div class="collaboratorOwnerImage">
+      <div class="collaboratorOwnerImage-keep">
+        <md-icon class="collbrt-md-btn">person_add</md-icon>
+      </div>
+    </div>
+    <div style="padding-top:10px;" >
+  <md-autocomplete class="myInput" md-no-cache="true" md-selected-item="selectedItem" placeholder="Person or email to share with" md-clear-button="false" ng-model="shareTo"
+  md-items="user in userList | filter:searchText" md-autoselect="true" md-dropdown-position="bottom" md-search-text="searchText" md-item-text="user.emailId">
+  <span>{{ user.emailId }}</span>
+        </div>
+        <div ng-click="addCollaborator()" class="collbrt-btn"><img class="outlineclass" src="assets/yes.svg" />
+          <md-tooltip>add collaborator
+            <md-tooltip>
+        </div>
+        </md-autocomplete>
+        <!-- <input type="text" placeholder="Person or email to share with " class="inputType" ng-model="shareTo" ></div>
+    <div ng-click="addCollaborator()" class="collbrt-btn"><img class="outlineclass" src="assets/yes.svg" /></div> -->
+      </div>
+    </div>
+    <div layout="row" layout-align="end end">
+      <md-button ng-click="Close()">Cancel</md-button>
+      <md-button>Save</md-button>
+    </div>
+  </div>

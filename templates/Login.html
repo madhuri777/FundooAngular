@@ -1,0 +1,42 @@
+<div >
+  <div layout="row" layout-align="space-around" layout-padding="layout-padding" class="login-form" >
+    <md-card>
+      <md-toolbar>
+        <div style="background-color: #FFBB00;">
+        <h2><center>Login Form</center></h2>
+        </div>
+      </md-toolbar>
+      <md-card-content>
+        <form name="Form">
+          <div>
+            <div>
+              <md-input-container>
+                <label>Email-id</label>
+                <input required type="email" ng-model="email" ng-pattern="/(^[a-zA-Z0-9]+@+[a-zA-Z_]+\.[a-zA-Z]{2,3})$/" />
+                <div ng-messages="Form.email.$error">
+                  <div ng-message-exp="['required','pattern']">Invalid email address,please re-enter mail id.</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div>
+              <md-input-container>
+                <label>Password</label>
+                <input required type="password" ng-model="password" minlength="8" maxlength="12" />
+                <div ng-messages="Form.email.$error">
+                  <div ng-message-exp="['required','minlength','maxlength']">password length should be min 8.</div>
+                </div>
+              </md-input-container>
+            </div>
+          </div>
+          <md-action>
+            <md-button style="background-color: #FFBB00;" ng-click="login()" ng-disabled="!Form.$valid"> Login</md-button>
+            <md-button style="background-color: #FFBB00;" ng-click=registation()> Registration</md-button>
+          </md-action>
+        </form>
+      </md-card-content>
+      <md-button ng-click="forgotPassword()"><small style="color: #FFBB00;"><i> Forgot Password</i></small></md-button>
+       <!-- <md-button ><a href="templates/ForgotPassWord.html">Forgot Password</a></md-button> -->
+    </md-card>
+  </div>
+  <!-- </md-content> -->
+</div>

@@ -1,0 +1,28 @@
+<div style="background-color:#e8e8e8;padding-top:35px;">
+  <div id="dashboard" class="dashboard" layout-align='start start' style="padding-top:55px;">
+    <div layout='row' layout-wrap layout-align='start start'>
+      <md-card ng-repeat="note in getNotes | filter: {trash:true} " ng-style="{'background-color': note.colour}" class="cards">
+        <div ng-if="note.image" style="padding-top:5px;"><img ng-src="{{note.image}}" alt="image" class="imageClass" /></div>
+        <p class="displayCard"><small> {{note.title}} </small></p>
+        <md-card-content>
+          <p class="displayCard"><small>{{note.discription}}</small></p>
+        </md-card-content>
+        <div layout="row">
+          <md-menu>
+            <md-button class="md-icon-button" ng-click="$mdMenu.open($event)">
+              <md-icon style="color: black; padding-left:10px;">more_vert</md-icon>
+              <md-tooltip>more</md-tooltip>
+            </md-button>
+            <md-menu-content width="2">
+              <md-menu-item ng-repeat="item in trashmore">
+                <md-button ng-click="deleteClick($index,note)">
+                  {{item.option}}
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </div>
+      </md-card>
+      <div>
+      </div>
+    </div>

@@ -1,0 +1,33 @@
+<div style="background-color:#e8e8e8;">
+  <div>
+    <createcard></createcard>
+    <div layout='row'  layout-align='start start' layout-wrap flex-offset="20" class="card" >
+
+      <div  ng-repeat="note in getNotes " class="cards">
+        <div ng-if="label.labelName==secondParameter" ng-repeat="label in note.label ">
+        <md-card ng-style="{'background-color': note.colour}">
+          <div layout="column" layout-align="start end" style="outline:none;" ng-click="isPin(note)"><img src="assets/pin.svg" />
+            <md-tooltip>pin</md-tooltip>
+          </div>
+          <p class="displayCard"><small> {{note.title}} </small></p>
+          <md-card-content>
+            <p class="displayCard"><small>{{note.discription}}</small></p>
+          </md-card-content>
+          <md-chips ng-if="note.reminder">
+            <md-chip md-removable="removable">
+              <md-icon>schedule</md-icon>{{note.reminder|date:shortDate}}
+              <md-icon style="outline:none;" ng-click="removeReminder(note)">cancel</md-icon>
+            </md-chip>
+          </md-chips>
+          <md-chips ng-if="note.label" ng-repeat="label in note.label" ng-mouseenter="cancel=true" ng-mouseleave="cancel=false">
+            <md-chip md-removable="true" >{{label.labelName}}
+              <md-icon style="outline:none;" ng-show="cancel" ng-click="removeLabel(note,label)">cancel</md-icon>
+            </md-chip>
+          </md-chips>
+          <icon></icon>
+        </md-card>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

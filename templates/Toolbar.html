@@ -1,0 +1,47 @@
+<div style="position:fixed;z-index:100;">
+  <md-toolbar style="background-color: #f1b401; position: fixed;">
+    <div class="md-toolbar-tools" layout-align="space-around center">
+      <md-button  ng-click="toggleLeft()">
+        <md-icon style="color: black;">menubar</md-icon>
+      </md-button>
+      <h2>Fundoo Notes</h2>
+        <span flex></span>
+      <div  style="width:650px;background-color:#f1a639;height:50px;padding-left:5px;">
+          <md-button >
+            <md-icon style="color: black; ">searchbar</md-icon>
+          </md-button>
+          <input class="search" style="background-color:#f1a639;border-width: 0;width:500px;outline:none;" type="text" ng-model="searchString" placeholder="Search" />
+        <md-button >
+          <md-icon style="visibility:hidden;">clear</md-icon>
+        </md-button>
+        </div>
+      <span flex></span>
+      <div layout-between center flex>
+        <md-button class="md-icon-button">
+          <md-icon>refresh</md-icon>
+          <md-tooltip>refresh</md-tooltip>
+        </md-button>
+      </div>
+
+      <div layout-between center flex  ng-show="showlistView">
+        <md-button class="md-icon-button"   >
+          <md-icon  ng-click="listView()"  style="outline:none;">view_stream</md-icon>
+           <md-tooltip>List view</md-tooltip>
+        </md-button>
+      </div>
+      <div layout-between center flex ng-show="showgridView" >
+        <md-button class="md-icon-button"  >
+          <md-icon   ng-click="gridView()" style="outline:none;">view_quilt</md-icon>
+          <md-tooltip>greed view</md-tooltip>
+        </md-button>
+      </div>
+      <div >
+        <md-button ng-click="userAccountPanel($event,'LogOutPanel')" class="md-icon-button">
+
+          <md-icon> account_circle</md-icon>
+          <md-tooltip>Google Account<br/>Mayur Satkar <br/>{{email}}</md-tooltip>
+        </md-button>
+      </div>
+    </div>
+</md-toolbar>
+</div>

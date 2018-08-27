@@ -1,0 +1,74 @@
+<div style="background-color:#e8e8e8;">
+  <div id="dashboard" class="dashboard" layout-align='space-around center' layout-gt-xs="30">
+    <createcard></createcard>
+    <div class="createNote" ><strong>Pinned</strong></div>
+    <div layout='row' layout-wrap layout-align='start start'>
+      <md-card ng-repeat="note in getNotes | filter :{trash:false}|filter:{archive:false}|filter:{pin:true}" style="outline:none;" ng-style="{'background-color':note.colour}" class="cards myCard">
+        <div layout="column" style="outline:none;" ng-click="isPin(note)" class="pinClass"><img src="assets/unpin.svg"/>
+          <md-tooltip>unpin</md-tooltip>
+        </div>
+        <div ng-if="note.image"><img ng-src="{{note.image}}" alt="image" class="imageClass" /></div>
+        <div style="outline:none;" ng-click="updateDialogCard($event,note,'dialogCard')">
+          <p layout="row"><small class="displayCard"> {{note.title}} </small></p>
+          <md-card-content style="outline:none;">
+            <p><small class="displayCard">{{note.discription}}</small></p>
+          </md-card-content>
+        </div>
+        <div layout="row" layout-wrap>
+        <md-chips ng-if="note.reminder" ng-mouseenter="cancel=true" ng-mouseleave="cancel=false">
+          <md-chip md-removable="true">
+            <md-icon class="chip-time-icon">schedule</md-icon>{{note.reminder|date:shortDate}}
+            <div class="closebtn" ng-click="removeReminder(note)" ng-show="cancel" >&times;</div>
+          </md-chip>
+        </md-chips>
+        <md-chips ng-if="note.label" ng-repeat="label in note.label" ng-mouseenter="cancel=true" ng-mouseleave="cancel=false">
+          <md-chip md-removable="true" >{{label.labelName}}
+            <div class="closebtn" ng-click="removeLabel(note,label)" ng-show="cancel" >&times;</div>
+          </md-chip>
+        </md-chips>
+        <!-- <md-chips ng-if="note.shareTo" ng-repeat="user in note.shareTo" ng-mouseenter="cancel=true" ng-mouseleave="cancel=false">
+          <md-chip md-removable="true" >{{user}}
+            <div class="closebtn" ng-click="removeLabel(note,label)" ng-show="cancel" >&times;</div> -->
+            <!-- <md-icon style="outline:none;" ng-show="cancel" ng-click="removeLabel(note,label)">cancel</md-icon> -->
+          <!-- </md-chip>
+        </md-chips> -->
+        <div ng-if="user" ng-repeat="user in note.shareTo" style="padding:5px;"><div class="userOnCards"><img ng-src="{{user.profile|| getInitials(userName)}}" alt="{{user.username.first}}"></div></div>
+      </div>
+        <icon></icon>
+      </md-card>
+    </div>
+    <div class="createNote"><strong>Others</strong></div>
+    <div layout='row' layout-wrap  layout-align='start start'>
+      <md-card ng-repeat="note in getNotes | filter :{trash:false}|filter:{archive:false}|filter:{pin:false}" style="outline:none;" ng-style="{'background-color': note.colour}" class="cards myCard">
+       <div>
+        <div layout="column" style="outline:none;" ng-click="isPin(note)" class="pinClass"><img src="assets/pin.svg" />
+          <md-tooltip>pin</md-tooltip>
+        </div>
+        <div ng-if="note.image"><img ng-src="{{note.image}}" alt="image" class="imageClass" /></div>
+      </div>
+        <div style="outline:none;" ng-click="updateDialogCard($event,note,'dialogCard')">
+          <p layout="row"><small class="displayCard" layout-wrap> {{note.title}} </small></p>
+          <md-card-content style="outline:none;">
+            <p><small class="displayCard">{{note.discription}}</small></p>
+          </md-card-content>
+        </div>
+        <div layout="row" layout-wrap>
+          <md-chips ng-if="note.reminder" ng-mouseenter="cancel=true" ng-mouseleave="cancel=false">
+            <md-chip md-removable="removable">
+              <md-icon class="chip-time-icon">schedule</md-icon>{{note.reminder|date:shortDate}}
+              <div class="closebtn" ng-click="removeReminder(note)" ng-show="cancel" >&times;</div>
+              <!-- <md-icon style="outline:none;" ng-show="cancel" ng-click="removeReminder(note)">cancel</md-icon> -->
+            </md-chip>
+          </md-chips>
+          <md-chips ng-if="note.label" ng-repeat="label in note.label" ng-mouseenter="cancel=true" ng-mouseleave="cancel=false">
+            <md-chip md-removable="true" >{{label.labelName}}
+              <div class="closebtn" ng-click="removeLabel(note,label)" ng-show="cancel" >&times;</div>
+              <!-- <md-icon style="outline:none;" ng-show="cancel" ng-click="removeLabel(note,label)">cancel</md-icon> -->
+            </md-chip>
+          </md-chips>
+        </div>
+        <icon></icon>
+      </md-card>
+    </div>
+  </div>
+</div>

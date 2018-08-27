@@ -1,0 +1,29 @@
+<div class="createlabeldiv1">
+  <div class="createlabeldiv1-innerdiv">Edit labels</div>
+  <div layout="row">
+    <div ng-click=""><img class="outlineclass" ng-click="" src="assets/cancel.svg" />
+      <md-tooltip>Cancel</md-tooltip>
+    </div><input placeholder="Create new label" ng-model="labelName" class="outlineclass" />
+    <div ng-click="createlabel()"><img class="outlineclass" src="assets/yes.svg" />
+      <md-tooltip>Create label</md-tooltip>
+    </div>
+  </div>
+  <div ng-repeat="x in getLabels|orderBy:'labelName'">
+    <div layout="row" class="labelDisplay" ng-mouseenter="label=true" ng-mouseleave="label=false">
+        <div ng-hide="label"><img src="assets/label.svg" /></div>
+        <div ng-show="label" ng-click="deleteLabel(x)"><img src="assets/delete.svg" />
+          <md-tooltip>Delete label</md-tooltip>
+        </div>
+       <div><input ng-model="x.labelName" class="outlineclass"/></div>
+        <div ng-hide="editlabel" ng-click="editLabel(x)">
+        <md-icon>create</md-icon>
+        <md-tooltip>Rename label</md-tooltip>
+        </div>
+        <div  ng-show="editlabel" ng-click="editedLabel(x)">
+        <img class="outlineclass" src="assets/yes.svg" />
+          <md-tooltip>Create label</md-tooltip>
+        </div>
+    </div>
+  </div>
+</div>
+<div ng-click="hide()" class="createlabeldiv2"><mdd-button>Done</md-button></div>

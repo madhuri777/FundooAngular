@@ -1,0 +1,40 @@
+<md-dialog ng-style="{'background-color': item.colour}" style="width:600px;">
+  <md-card-content>
+    <div style="outline:none;position:relative;">
+      <img src="assets/pin.svg" style="position:absolute;right:0;z-index:1;"/>
+      <div>
+      <div ng-if="item.image" style="position:relative;">
+        <img ng-src="{{item.image}}" alt="image"/>
+        <img src="assets/delete.svg" style="position:absolute;right:0;"/></div>
+    </div>
+  </div>
+    <p class="displayCard">
+      <div></div>
+      <div style="padding-left:10px;" contenteditable="true"  class="borderline" ng-model="item.title" data-placeholder="title" ></div>
+    </p>
+    <p class="displayCard">
+      <div style="padding-left:10px;" contenteditable class="borderline" ng-model="item.discription" class="createNote" data-placeholder='Enter some text'></div>
+    </p>
+  </md-card-content>
+  <div layout="row">
+    <md-chips ng-if="item.reminder" ng-mouseenter="cancel=true" ng-mouseleave="cancel=false">
+      <md-chip md-removable="removable">
+        <md-icon class="chip-time-icon">schedule</md-icon>{{item.reminder|date:shortDate}}
+        <div class="closebtn" ng-click="removeReminder(item)" ng-show="cancel">&times;</div>
+      </md-chip>
+    </md-chips>
+    <md-chips ng-if="item.label" ng-repeat="label in item.label" ng-mouseenter="cancel=true" ng-mouseleave="cancel=false">
+      <md-chip md-removable="true">{{label.labelName}}
+        <div class="closebtn" ng-click="removeLabel(note,label)" ng-show="cancel">&times;</div>
+      </md-chip>
+    </md-chips>
+  </div>
+  <div layout="row">
+    <div>
+      <icon></icon>
+    </div>
+    <div>
+      <md-button ng-click="upadtenote(item);Close()" style="margin-top:24px;">close</md-button>
+    </div>
+  </div>
+</md-dialog>

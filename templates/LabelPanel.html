@@ -1,0 +1,10 @@
+<div class="labelPanel">
+<div>Label Note</div>
+<div layout="row">
+<div ><img src="assets/searchlabel.svg" /></div>
+<input placeholder="Enter label Name" class="outlineclass">
+</div>
+<div ng-repeat="l in getLabels">
+  <input type="checkbox">{{l.labelName}}
+</div>
+</div>

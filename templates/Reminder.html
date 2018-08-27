@@ -1,0 +1,86 @@
+<div>
+  <md-card class="demo-menu-example">
+    <div ng-show="reminder">
+      <div style="padding:10px 15px">Reminder:</div>
+      <md-divider></md-divider>
+      <md-list>
+        <md-list-item ng-click="null">
+          <div layout="row">
+            <div>LaterToday</div>
+            <div style="padding-left:100px;">8A.M</div>
+          </div>
+        </md-list-item>
+        <md-list-item ng-click="null">
+          <div layout="row">
+            <div>Tommorow</div>
+            <div style="padding-left:100px;">8A.M</div>
+          </div>
+        </md-list-item>
+        <md-list-item ng-click="null">
+          <div layout="row">
+            <div>NextWeek</div>
+            <div style="padding-left:70px;">mon,8A.M</div>
+          </div>
+        </md-list-item>
+        <!-- <md-list-item ng-click="null">Home</md-list-item> -->
+        <md-list-item ng-click="pickDateTime()">
+          <md-icon>schedule</md-icon>Pick date & time</md-list-item>
+      </md-list>
+    </div>
+    <div ng-hide="reminder">
+      <div style="padding:5px; width:300px; ">
+        <md-icon ng-click="reminder=true" style="outline:none;">keyboard_backspace</md-icon>Pick date & time</div>
+      <md-list>
+        <md-divider></md-divider>
+        <md-list-item>
+          <md-datepicker ng-model="birthday" md-min-date="currentDate"></md-datepicker>
+        </md-list-item>
+        <md-divider></md-divider>
+        <!-- <md-input-container>
+        <label>combobox1</label>
+        <input type="text" ng-model="chosen"/>
+      </md-input-container> -->
+         <md-list-item>
+           <md-input-container>
+             <input type="text" placeholder="Add a time"/>
+           </md-input-container>
+           <md-input-container>
+            <md-select name="" ng-model="" >
+              <md-option value="">
+                <div layout="row">
+                  <div>morning</div>
+                  <div style="padding-left:100px;">8:00 A.M</div>
+                </div>
+              </md-option>
+              <md-option value="">
+                <div layout="row">
+                  <div>Afternoon</div>
+                  <div style="padding-left:90px;">1:00 P.M</div>
+                </div>
+              </md-option>
+              <md-option value="">
+                <div layout="row">
+                  <div>Evening</div>
+                  <div style="padding-left:100px;">6:00 P.M</div>
+                </div>
+              </md-option>
+              <md-option>
+                <div layout="row">
+                  <div>Night</div>
+                  <div style="padding-left:120px;">8:00 P.M</div>
+                </div>
+              </md-option>
+            </md-select>
+              </md-input-container>
+        </md-list-item>
+
+
+        <md-list-item ng-click="null">Does no repeat</md-list-item>
+        <md-divider></md-divider>
+        <div style="padding-left:150px;">
+          <md-button ng-click="date();close()">Save</md-button>
+        </div>
+      </md-list>
+    </div>
+    <!-- </md-card> -->
+</div>

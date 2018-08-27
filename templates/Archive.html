@@ -1,0 +1,33 @@
+<div style="background-color:#e8e8e8;padding-top:40px;">
+  <div id="dashboard" class="dashboard" layout-align='start start' style="padding-top:55px;">
+    <div layout='row' layout-wrap layout-align='start start'>
+      <div ng-repeat="note in getNotes | filter: {archive:true}|filter:{trash:false} ">
+        <md-card style="outline:none;" ng-style="{'background-color': note.colour}" class="cards">
+          <div layout="column" layout-align="start end" style="outline:none;" ng-click="isPin(note)"><img src="assets/pin.svg" />
+            <md-tooltip>pin archive note</md-tooltip>
+          </div>
+          <div style="outline:none;" ng-click="updateDialogCard($event,note)">
+            <p layout="row" class="displayCard"><small> {{note.title}} </small></p>
+            <md-card-content style="outline:none;">
+              <p class="displayCard"><small>{{note.discription}}</small></p>
+            </md-card-content>
+          </div>
+          <div layout="row">
+            <md-chips ng-if="note.reminder" ng-mouseenter="cancel=true" ng-mouseleave="cancel=false">
+              <md-chip md-removable="true">
+                <md-icon class="chip-time-icon">schedule</md-icon>{{note.reminder|date:shortDate}}
+                <div class="closebtn" ng-click="removeReminder(note)" ng-show="cancel" >&times;</div>
+              </md-chip>
+            </md-chips>
+            <md-chips ng-if="note.label" ng-repeat="label in note.label" ng-mouseenter="cancel=true" ng-mouseleave="cancel=false">
+              <md-chip md-removable="true" layout="row">{{label.labelName}}
+                <div class="closebtn" ng-click="removeLabel(note,label)" ng-show="cancel" >&times;</div>
+              </md-chip>
+            </md-chips>
+          </div>
+          <icon></icon>
+        </md-card>
+      </div>
+    </div>
+  </div>
+  <div>

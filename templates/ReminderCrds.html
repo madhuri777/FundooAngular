@@ -1,0 +1,24 @@
+<div style="background-color:#e8e8e8;">
+  <div id="dashboard" class="dashboard" layout-align='space-around center' >
+    <createcard></createcard>
+    <div layout='row' layout-align='start start' layout-wrap flex-offset="10" class="card" >
+      <!-- <div ng-repeat="x in getNotes | filter: {reminder:'!!'}|filter: {trash:false} " class="cards"> -->
+        <md-card  ng-repeat="x in getNotes | filter: {reminder:'!!'}|filter: {trash:false} " ng-style="{'background-color': x.colour}" class="cards">
+          <div layout="column" layout-align="start end" style="outline:none;" ng-click="isPin(x)"><img src="assets/pin.svg" />
+            <md-tooltip>pin</md-tooltip>
+          </div>
+          <p class="displayCard"><small> {{x.title}} </small></p>
+          <md-card-content>
+            <p class="displayCard"><small>{{x.discription}}</small></p>
+          </md-card-content>
+          <md-chips ng-if="x.reminder" ng-mouseenter="cancel=true" ng-mouseleave="cancel=false">
+            <md-chip md-removable="removable">
+              <md-icon class="chip-time-icon">schedule</md-icon>{{x.reminder|date:shortDate}}
+              <div class="closebtn" ng-click="removeReminder(x)" ng-show="cancel" >&times;</div>
+            </md-chip>
+          </md-chips>
+          <icon></icon>
+        </md-card>
+    </div>
+  </div>
+</div>

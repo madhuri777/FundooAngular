@@ -1,0 +1,17 @@
+<md-card id="logOut">
+  <div layout="row">
+    <div class="SignOutOwnerImage" ng-click="ProfileImage($event)">
+      <div ><img ng-src="{{user.profile|| getInitials(userName)}}" alt="{{user.username.first}}"  class="profileImage">
+     <span class="changeButton" >Change</span>
+      </div>
+    <md-tooltip>Profile</md-tooltip>
+    </div>
+    <div layout="column">
+    <h6>{{user.username}}</h6>
+    <h6>{{user.emailId}}</h6>
+  </div>
+  </div>
+  <md-card-actions>
+    <md-button ng-click="logOut();close()">Sign Out</md-button>
+  </md-card-actions>
+</md-card>
