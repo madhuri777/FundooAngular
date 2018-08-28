@@ -1,7 +1,7 @@
 app.controller('notesController', function($filter, $scope, $location, $state, userService, $mdDialog, $mdPanel, $mdToast, labelService, $mdSidenav) {
 
-  $scope.user = localStorage.getItem('userDto');
-  console.log("user response ", $scope.user);
+  $scope.user = JSON.parse(localStorage.getItem('userDto'));
+  console.log("user ",$scope.user);
   // document.getElementById("ToolBarColor").style.background-color = "#f1b401";
   // function checkForToken() {
   //   token = localStorage.getItem('token');
@@ -568,7 +568,6 @@ console.log("item in dialog box ",item);
       $state.go('login');
       localStorage.clear();
     }
-
     $scope.ProfileImage = function(event) {
       $mdDialog.show({
         locals: {
@@ -583,11 +582,10 @@ console.log("item in dialog box ",item);
       })
     };
 
-    function profilDialogController($scope, $timeout) {
+    function profilDialogController($scope, $timeout,$mdDialog) {
       $scope.myImage = '';
       $scope.myCroppedImage = '';
       $scope.userdto = JSON.parse(localStorage.getItem('userDto'));
-      console.log("userDTO ", $scope.userdto);
 
       function dataURLtoFile(dataurl, filename) {
         var arr = dataurl.split(','),
@@ -631,15 +629,15 @@ console.log("item in dialog box ",item);
           var userdto = $scope.userdto;
           userdto.profile = $scope.imageUrl;
           userService.postmethod(userdto, url).then(function successCallback(response) {
-            console.log("user update ", response.data);
             localStorage.setItem("userDto", JSON.stringify(response.data.userdto));
             $scope.profile = response.data.userdto.profile;
-            console.log("image of profile ", $scope.profile);
           }, function errorCallback(response) {});
-          console.log("successfully ", response.data);
         }, function errorCallback(response) {
-          console.log("erro ", response);
         });
+      }
+
+      $scope.hide = function() {
+        $mdDialog.hide();
       }
     }
 
@@ -657,22 +655,45 @@ console.log("item in dialog box ",item);
       context.fillStyle = "#ccc";
       var first;
       first = name.charAt(0);
-
       var initials = first;
       context.fillText(initials.toUpperCase(), 25, 60);
-
       var data = canvas.toDataURL();
       document.body.removeChild(canvas);
       return data;
-
     }
     $scope.close = function() {
-      console.log("close logout panel");
       mdPanelRef && mdPanelRef.close();
     };
 
-  }
+  };
 
+  $scope.getInitials = function(name) {
+  var canvas = document.createElement('canvas');
+  canvas.style.display = 'none';
+  canvas.width = '96';
+  canvas.height = '96';
+  document.body.appendChild(canvas);
+  var context = canvas.getContext('2d');
+  context.fillStyle = "#999";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.font = "50px Arial";
+  context.fillStyle = "#ccc";
+  var first;
+  first = name.charAt(0);
+  var initials = first;
+  context.fillText(initials.toUpperCase(), 25, 60);
+  var data = canvas.toDataURL();
+  document.body.removeChild(canvas);
+  return data;
+}
+
+$scope.colorChange=function(){
+  console.log("color change of toolbar");
+  document.getElementById('wholeToolbar').style.backgroundColor="blue";
+  document.getElementById('searchBar').style.backgroundColor="white";
+  document.getElementById('searchBar2').style.backgroundColor="white";
+
+}
 
   $scope.LabelState = function(labelNAme) {
     console.log("created label state ", labelNAme.labelName);
