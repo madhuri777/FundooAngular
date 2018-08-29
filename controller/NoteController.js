@@ -127,6 +127,7 @@ app.controller('notesController', function($filter, $scope, $location, $state, u
   };
 
   function DialogCardController($scope, $mdPanel, $mdDialog, item, Notes, OuterScope) {
+    $scope.user = JSON.parse(localStorage.getItem('userDto'));
     OuterScope.getAllNotes();
     $scope.collaboratorUser = item.shareTo;
     console.log("collaborator shareTo ", item.shareTo);
@@ -141,12 +142,13 @@ console.log("item in dialog box ",item);
         OuterScope.getAllNotes();
       }, function errorCallback(response) {
         console.log("successfully not update");
-
         OuterScope.getAllNotes();
       });
-
-
     }
+   $scope.getImgeByName=function(name){
+    var data= OuterScope.getInitials(name);
+    return data;
+   }
 
     $scope.Close = function() {
       $mdDialog.hide();
@@ -641,26 +643,10 @@ console.log("item in dialog box ",item);
       }
     }
 
-
-    $scope.getInitials = function(name) {
-      var canvas = document.createElement('canvas');
-      canvas.style.display = 'none';
-      canvas.width = '96';
-      canvas.height = '96';
-      document.body.appendChild(canvas);
-      var context = canvas.getContext('2d');
-      context.fillStyle = "#999";
-      context.fillRect(0, 0, canvas.width, canvas.height);
-      context.font = "50px Arial";
-      context.fillStyle = "#ccc";
-      var first;
-      first = name.charAt(0);
-      var initials = first;
-      context.fillText(initials.toUpperCase(), 25, 60);
-      var data = canvas.toDataURL();
-      document.body.removeChild(canvas);
-      return data;
-    }
+    $scope.getEmageByName=function(name){
+     var data=OuterScpe.getInitials(name);
+     return data;
+   }
     $scope.close = function() {
       mdPanelRef && mdPanelRef.close();
     };
@@ -686,13 +672,14 @@ console.log("item in dialog box ",item);
   document.body.removeChild(canvas);
   return data;
 }
-
+$scope.menubar=true;
 $scope.colorChange=function(){
   console.log("color change of toolbar");
   document.getElementById('wholeToolbar').style.backgroundColor="blue";
   document.getElementById('searchBar').style.backgroundColor="white";
   document.getElementById('searchBar2').style.backgroundColor="white";
-
+$scope.backToolBar=true;
+$scope.menubar=false;
 }
 
   $scope.LabelState = function(labelNAme) {

@@ -4,8 +4,9 @@
   <div class="collabr-font">
     <div layout="row" class="collabr-owner">
 
-      <div class="collaboratorOwnerImage">
-        <div class="collaboratorOwnerImage-keep" style="background-image: url('/assets/keep-512.png');"></div>
+      <div class="">
+        <img ng-src="{{item.profile|| getImgeByName(item.username)}}" alt="{{item.username.first}}" class="collaboratorOwnerImage">
+        <!-- <div class="collaboratorOwnerImage-keep" style="background-image: url('/assets/keep-512.png');"></div> -->
       </div>
 
       <div>
@@ -19,8 +20,10 @@
     </div>
     <div layout="row" class="collabr-owner" ng-repeat="user in collaboratorUser">
 
-      <div class="collaboratorOwnerImage">
-        <div class="collaboratorOwnerImage-keep" style="background-image: url('/assets/keep-512.png');"></div>
+      <div class="">
+        <img ng-src="{{user.profile|| getImgeByName(user.username)}}" alt="{{user.username.first}}" class="collaboratorOwnerImage">
+
+        <!-- <div class="collaboratorOwnerImage-keep" style="background-image: url('/assets/keep-512.png');"></div> -->
       </div>
 
       <div class="collabr-owner">

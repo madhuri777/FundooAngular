@@ -2,7 +2,8 @@
   <md-toolbar style="background-color: #f1b401; position: fixed;" id="wholeToolbar">
     <div class="md-toolbar-tools" layout-align="space-around center">
       <md-button  ng-click="toggleLeft()">
-        <md-icon style="color: black;">menubar</md-icon>
+        <md-icon style="color: black;" ng-show="menubar">menubar</md-icon>
+          <md-icon ng-click="" style="outline:none;" ng-show="backToolBar">keyboard_backspace</md-icon>
       </md-button>
       <h2>Fundoo Notes</h2>
         <span flex></span>
