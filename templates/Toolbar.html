@@ -1,13 +1,14 @@
 <div style="position:fixed;z-index:100;" >
-  <md-toolbar style="background-color: #f1b401; position: fixed;" id="wholeToolbar">
+  <md-toolbar style=" position: fixed;" id="wholeToolbar" ng-style="{'background-color': getTrColor(secondParameter)}">
     <div class="md-toolbar-tools" layout-align="space-around center">
       <md-button  ng-click="toggleLeft()">
         <md-icon style="color: black;" ng-show="menubar">menubar</md-icon>
           <md-icon ng-click="" style="outline:none;" ng-show="backToolBar">keyboard_backspace</md-icon>
       </md-button>
+      <h2>{{secondParameter}}</h2>
       <h2>Fundoo Notes</h2>
         <span flex></span>
-      <div  style="width:650px;background-color:#f1a639;height:50px;padding-left:5px;" id="searchBar">
+      <div  style="width:650px;background-color:#f1a639;height:50px;padding-left:5px;" id="searchBar" ng-style="color">
           <md-button >
             <md-icon style="color: black; ">searchbar</md-icon>
           </md-button>

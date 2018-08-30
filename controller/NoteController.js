@@ -24,6 +24,15 @@ app.controller('notesController', function($filter, $scope, $location, $state, u
 
   var url = $location.path().split('/');
   $scope.secondParameter = url[3];
+  console.log("state name ",);
+
+  $scope.getTrColor = function (colorIndex) {
+    if(colorIndex=='dashboard'){
+      return '#f1b401';
+    }else{
+      return 'rgb(96, 125, 139)';
+    }
+  };
 
   $scope.toggleLeft = buildToggler('left');
   $scope.thisScope = $scope;
@@ -695,7 +704,21 @@ $scope.menubar=false;
     $state.go('home.dashboard');
   }
 
+   // $scope.colorToolBar=function(){
+   //   var url = $location.path().split('/');
+   //     $scope.secondParameter = url[3];
+   //   console.log("state color chnage  ",url);
+   //   if($scope.secondParameter!='dashboard'){
+   //     document.getElementById('wholeToolbar').style.backgroundColor="rgb(96, 125, 139)";
+   //   }
+   // }
+   // $scope.colorToolBar();
   $scope.archiveState = function() {
+    //  document.getElementById('wholeToolbar').style.backgroundColor="rgb(96, 125, 139)";
+    //  document.getElementById('searchBar').style.background="transparent";
+    //  document.getElementById('searchBar2').style.background="transparent";
+        //  background: transparent;
+
     $state.go('home.archive');
   }
 
